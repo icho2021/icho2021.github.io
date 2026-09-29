@@ -1,0 +1,473 @@
+<title>Zimin Cai Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout follows a reference the user chose: right-aligned nav, a hero paired
+   with an evidence grid, then numbered sections of cards that open in place. */
+:root{
+  --bg:#F7F5F1; --card:#FFFFFF; --ink:#1C1A17; --ink-2:#4A4540; --muted:#8A837B;
+  --rule:#E4DFD7; --accent:#8B6A3F; --accent-ink:#6E5231;
+  --c1:#C4761E; --c2:#4E7C52; --c3:#4B5EA8; --c4:#B04A3C; --c5:#7A5AA0; --c6:#3F7F88;
+  --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15130F; --card:#1D1A16; --ink:#F0EBE3; --ink-2:#C6BFB5; --muted:#8E867C;
+  --rule:#302B24; --accent:#C69A63; --accent-ink:#D8B181;
+  --c1:#D98F3C; --c2:#6E9E72; --c3:#7789C9; --c4:#CC6E5F; --c5:#9C7DC0; --c6:#5FA0A9;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#15130F; --card:#1D1A16; --ink:#F0EBE3; --ink-2:#C6BFB5; --muted:#8E867C;
+  --rule:#302B24; --accent:#C69A63; --accent-ink:#D8B181;
+  --c1:#D98F3C; --c2:#6E9E72; --c3:#7789C9; --c4:#CC6E5F; --c5:#9C7DC0; --c6:#5FA0A9;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:15.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:70rem;margin:0 auto;padding-inline:24px}
+a{color:var(--accent-ink);text-decoration:none}
+h1,h2,h3{margin:0;text-wrap:balance}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+nav .wrap{display:flex;justify-content:flex-end;align-items:center;gap:1.6rem;
+  padding-block:1.05rem;flex-wrap:wrap}
+nav a{font-size:.88rem;color:var(--ink-2);font-weight:500}
+nav a:hover{color:var(--accent-ink)}
+#themer{width:26px;height:26px;border-radius:50%;border:1px solid var(--rule);
+  background:var(--ink);cursor:pointer;padding:0;flex:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);
+  padding-block:clamp(2.5rem,6vw,4.5rem) 1rem;align-items:start}
+h1{font-size:clamp(3.2rem,9vw,5.2rem);font-weight:800;letter-spacing:-.035em;
+  line-height:.98;margin-top:1.1rem}
+.h1-zh{display:block;font-size:.34em;font-weight:500;color:var(--muted);
+  letter-spacing:.06em;margin-top:.5rem}
+.subtitle{font-family:var(--mono);font-size:clamp(1rem,2.6vw,1.22rem);
+  color:var(--accent);margin-top:.85rem;letter-spacing:-.01em}
+.lede{font-size:clamp(1.02rem,2.4vw,1.14rem);color:var(--ink);margin-top:1.4rem;max-width:34ch}
+.hero p.body{color:var(--ink-2);margin-top:1rem;max-width:44ch;font-size:.97rem}
+.cta{display:flex;gap:.7rem;margin-top:1.9rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.62rem 1.25rem;
+  border-radius:999px;font-size:.88rem;font-weight:600;border:1px solid var(--accent);
+  background:var(--accent);color:#FFF8EE}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn:hover{filter:brightness(1.06)}
+
+/* evidence grid */
+.ev-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
+.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.ev{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--k);
+  border-radius:4px;padding:.95rem 1rem 1rem;min-width:0}
+.ev .k{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);display:block;line-height:1.5}
+.ev .n{font-family:var(--mono);font-size:clamp(1.28rem,3.4vw,1.62rem);font-weight:500;
+  color:var(--k);letter-spacing:-.025em;margin-top:.38rem;line-height:1.1}
+.ev .w{font-size:.83rem;font-weight:600;margin-top:.28rem}
+.ev .f{font-size:.73rem;color:var(--muted);margin-top:.38rem;line-height:1.45}
+
+/* sections */
+section{padding-block:clamp(2.6rem,6vw,4rem)}
+.shead{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:1rem;border-bottom:1px solid var(--rule);padding-bottom:.9rem;flex-wrap:wrap}
+.shead-l{display:flex;align-items:baseline;gap:.85rem;min-width:0}
+.num{font-family:var(--mono);font-size:.8rem;color:var(--accent);font-weight:500}
+h2{font-size:clamp(1.5rem,4vw,1.95rem);font-weight:800;letter-spacing:-.025em}
+.hint{font-size:.8rem;color:var(--muted)}
+
+/* project cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr));
+  gap:1.1rem;margin-top:1.6rem}
+.card{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--k);
+  border-radius:5px;overflow:hidden}
+.card summary{list-style:none;cursor:pointer;padding:1.15rem 1.25rem}
+.card summary::-webkit-details-marker{display:none}
+.tags{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.16rem .46rem;border-radius:3px;background:var(--bg);border:1px solid var(--rule);
+  color:var(--muted);white-space:nowrap}
+.tag.own{color:var(--k);border-color:var(--k)}
+.when{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-left:auto;white-space:nowrap}
+.card h3{font-size:1.06rem;font-weight:700;letter-spacing:-.015em;margin-top:.7rem;line-height:1.3}
+.role{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+.card .sum{font-size:.92rem;color:var(--ink-2);margin-top:.65rem}
+.more{font-family:var(--mono);font-size:.72rem;color:var(--k);margin-top:.85rem;
+  display:flex;align-items:center;gap:.35rem}
+.card[open] .more{opacity:.45}
+.detail{padding:0 1.25rem 1.3rem;border-top:1px solid var(--rule);margin-top:.15rem}
+.detail>*{margin:0}
+.detail p{font-size:.91rem;color:var(--ink-2);margin-top:.85rem;max-width:58ch}
+.detail .stack{font-family:var(--mono);font-size:.72rem;color:var(--muted);
+  padding-top:1rem;line-height:1.7}
+.detail .bound{font-size:.86rem;color:var(--muted);margin-top:1rem;
+  padding:.7rem .85rem;background:var(--bg);border-radius:4px}
+.detail .bound b{color:var(--ink-2)}
+.detail ul{margin:.85rem 0 0;padding-left:1.15rem;font-size:.91rem;color:var(--ink-2)}
+.detail li{margin-top:.4rem}
+.detail a{font-size:.88rem;font-weight:600;display:inline-block;margin-top:1rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:1.5rem 2.2rem;margin-top:1.7rem}
+.skills h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);padding-bottom:.55rem;
+  border-bottom:1px solid var(--rule)}
+.skills p{margin:.7rem 0 0;font-size:.91rem}
+.skills .n{color:var(--muted);font-size:.85rem;margin-top:.45rem}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;gap:.9rem 2.4rem;margin-top:1.5rem;
+  font-size:.95rem;align-items:center}
+.copy{background:none;border:1px solid var(--rule);border-radius:999px;
+  padding:.24rem .7rem;font:inherit;font-size:.78rem;color:var(--accent-ink);cursor:pointer}
+footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
+  font-size:.83rem;color:var(--muted)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:2.4rem}
+  .ev-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:460px){.ev-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<nav><div class="wrap">
+  <a href="#work">Work</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+  <a href="https://github.com/icho2021">GitHub</a>
+  <a href="https://www.linkedin.com/in/ichochoi/">LinkedIn</a>
+  <button id="themer" type="button" aria-label="Switch theme"></button>
+</div></nav>
+
+<div class="wrap">
+
+<div class="hero">
+  <div>
+    <h1>Zimin Cai<span class="h1-zh">蔡子珉</span></h1>
+    <p class="subtitle">Data Quality &times; Data Governance</p>
+    <p class="lede">MS Computer Science at Northeastern University. I build the
+      part of a pipeline that proves its own output is right.</p>
+    <p class="body">Most recently a governance layer over Canada's published
+      federal contract history: 506,847 records, 21 rules that each cite the
+      official definition behind them, and a test for every rule that breaks it
+      on purpose. It found CAD 6.09 billion of contract value quietly restated
+      between two monthly copies of the same government file.</p>
+    <div class="cta">
+      <a class="btn" href="#work">Work &darr;</a>
+      <a class="btn ghost" href="https://github.com/icho2021">Open source &nearr;</a>
+    </div>
+  </div>
+
+  <div>
+    <p class="ev-label">Evidence trace</p>
+    <div class="ev-grid">
+      <div class="ev" style="--k:var(--c1)">
+        <span class="k">CanadaBuys · scale</span>
+        <p class="n">506,847</p>
+        <p class="w">records checked</p>
+        <p class="f">2009&ndash;2026 · 91 columns · two source systems</p>
+      </div>
+      <div class="ev" style="--k:var(--c2)">
+        <span class="k">CanadaBuys · rigour</span>
+        <p class="n">15 / 15</p>
+        <p class="w">broken-on-purpose tests</p>
+        <p class="f">Each control has a case that makes it fail</p>
+      </div>
+      <div class="ev" style="--k:var(--c4)">
+        <span class="k">CanadaBuys · finding</span>
+        <p class="n">CAD 6.09B</p>
+        <p class="w">restated, not overwritten</p>
+        <p class="f">13,218 records changed between two monthly files</p>
+      </div>
+      <div class="ev" style="--k:var(--c3)">
+        <span class="k">CanadaBuys · triage</span>
+        <p class="n">126,708</p>
+        <p class="w">rows sent to a human</p>
+        <p class="f">No layer deletes a row · 650,571 explained cases filtered out</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="shead">
+    <div class="shead-l"><span class="num">01</span><h2>Work &amp; Projects</h2></div>
+    <span class="hint">Click any card for the full breakdown</span>
+  </div>
+
+  <div class="cards">
+
+    <details class="card" style="--k:var(--c1)" open>
+      <summary>
+        <div class="tags">
+          <span class="tag own">Solo</span><span class="tag">Data governance</span>
+          <span class="when">2026 · 08</span>
+        </div>
+        <h3>CanadaBuys Data Quality &amp; Compliance Agent</h3>
+        <p class="role">Designed and built alone · Python, DuckDB, AWS Batch</p>
+        <p class="sum">Canada publishes every contract its central buying
+          department awards. Anyone can download it; almost nobody can safely
+          use it. This answers one question: which rows can be used as they are,
+          and which need a person first.</p>
+        <p class="more">Full breakdown <span>&rarr;</span></p>
+      </summary>
+      <div class="detail">
+        <p><b>Four ways to handle a problem, and deleting is not one of them.</b>
+          21 rules, each tagged by what it triggers: stop the batch, label the
+          row for a person, fix it mechanically after approval, or just count it.
+          650,571 cases the government documentation already explains stay out of
+          the findings table, so they do not bury the 126,708 that matter.</p>
+        <p><b>A rule that finds nothing and a rule that is quietly broken look
+          identical in the output.</b> So each control has a test that breaks it
+          on purpose and asserts exactly the right alarm fires. Writing those
+          tests exposed two mistakes in my own design, including a test that
+          never reached the check it was meant to cover.</p>
+        <p><b>Never overwriting a batch paid off.</b> The second monthly file
+          restated 13,218 already-published records, and one disappeared from the
+          public record entirely. Had each run replaced the last, none of it
+          would be visible.</p>
+        <p><b>The language model never decides anything.</b> It finds the official
+          paragraph behind a rule and quotes it; the quote is then checked against
+          the source text and rejected when it does not appear. It invented one
+          claim, the check caught it, and nothing downstream moved.</p>
+        <p><b>Same answer on AWS as on my laptop, to the digit.</b> 124 seconds on
+          Batch with Fargate, then torn down, including the resources that quietly
+          keep billing.</p>
+        <div class="bound"><b>Next:</b> put the monthly run on a schedule with an
+          alarm when it fails, wire the fault-injection suite into CI so it runs
+          on every commit, and add freshness rules so the pipeline also answers
+          whether the data is current, not only whether it is correct.</div>
+        <p class="stack">Python · DuckDB · Parquet · Docker · AWS Batch on Fargate ·
+          S3 · ECR · CloudWatch · Ollama (local inference)</p>
+        <a href="https://github.com/icho2021/canadabuys-data-quality-compliance-agent">Code and eight decision documents &rarr;</a>
+      </div>
+    </details>
+
+    <details class="card" style="--k:var(--c6)">
+      <summary>
+        <div class="tags">
+          <span class="tag own">Team project</span><span class="tag">Cloud</span>
+          <span class="when">2026 · 04</span>
+        </div>
+        <h3>QuickScan Hub</h3>
+        <p class="role">Team project · my part was the failure path and IaC</p>
+        <p class="sum">A cloud security scanning platform on AWS, defined in
+          Terraform. Scans run asynchronously through a queue instead of inline,
+          so a slow scan never holds a request open.</p>
+        <p class="more">Full breakdown <span>&rarr;</span></p>
+      </summary>
+      <div class="detail">
+        <p>Request &rarr; SQS &rarr; worker long-polling &rarr; scanner on Fargate
+          &rarr; report to S3 &rarr; served back through the API. Workers scale on
+          queue depth rather than CPU, because queue depth is what actually
+          measures the backlog.</p>
+        <p>The network sits in three tiers. The scanners have no inbound route at
+          all and reach AWS services through a Gateway Endpoint. Subnets span two
+          availability zones so the load balancer can reroute and ECS health
+          checks can replace a task.</p>
+        <p><b>What I verified myself was the failure path:</b> a deliberate
+          dead-letter-queue injection test, confirming that a failing message
+          routes to the DLQ and the CloudWatch alarm fires. Terraform is split by
+          resource so each piece reads on its own.</p>
+        <div class="bound"><b>Scope:</b> 34 requests total, peak CPU
+          0.77%, peak queue depth around 9. This validated failure handling, not
+          throughput. The distributed architecture was the team's design; I do
+          not present it as mine alone.</div>
+        <p class="stack">AWS ECS Fargate · SQS · S3 · DynamoDB · ALB · NAT ·
+          VPC Gateway Endpoint · CloudWatch · Terraform · NGINX</p>
+        <a href="https://github.com/icho2021/quickscan-hub-cloud-security-platform">Repository &rarr;</a>
+      </div>
+    </details>
+
+    <details class="card" style="--k:var(--c2)">
+      <summary>
+        <div class="tags">
+          <span class="tag own">Solo</span><span class="tag">Modelling</span>
+          <span class="when">2026 · 04&ndash;06</span>
+        </div>
+        <h3>E-Commerce Analytics Platform</h3>
+        <p class="role">Built alone · star schema with a frozen metric layer</p>
+        <p class="sum">Six tables and one file that stops two correct queries
+          from producing two different numbers.</p>
+        <p class="more">Full breakdown <span>&rarr;</span></p>
+      </summary>
+      <div class="detail">
+        <p>Two fact tables and four dimensions. The facts are deliberately split
+          by grain, one row per order and one per order line, because collapsing
+          them silently doubles revenue on any multi-item order.</p>
+        <p>A quality suite runs on every load: required fields non-null, primary
+          keys unique across the fact table and all four dimensions, composite
+          keys unique, amounts non-negative, source freshness, and orphaned
+          foreign keys. Each check is marked critical or not, so a failure either
+          stops the load or is simply recorded.</p>
+        <p><b>The part I would keep in any project is the metrics file.</b> GMV,
+          average order value, repeat rate and on-time delivery each have their
+          definition and filters written down, including that the default excludes
+          anything not yet delivered. Without it, two people write two correct
+          queries and get two different answers.</p>
+        <p class="stack">Python · DuckDB · Parquet · S3 (raw and processed zones) ·
+          run metadata per load</p>
+      </div>
+    </details>
+
+    <details class="card" style="--k:var(--c5)">
+      <summary>
+        <div class="tags">
+          <span class="tag own">Solo</span><span class="tag">Applied AI</span>
+          <span class="when">2026 · 02</span>
+        </div>
+        <h3>Adaptive Hint Agent</h3>
+        <p class="role">Built alone · local LLM behind a rule-based policy</p>
+        <p class="sum">Reads how someone is struggling from their interaction
+          logs, then decides what kind of hint that calls for before generating
+          anything.</p>
+        <p class="more">Full breakdown <span>&rarr;</span></p>
+      </summary>
+      <div class="detail">
+        <p>Four stages: features from interaction logs, rule-based inference of
+          the learner's current state, a policy that decides what feedback that
+          state calls for, and only then generation.</p>
+        <p><b>Deciding which hint to give stays in the rules, not the prompt</b>,
+          so the decision can be inspected and changed without re-tuning a model.
+          The model runs locally through Ollama behind a provider abstraction, so
+          the same pipeline can point at a local or hosted backend without the
+          rest of the code knowing which.</p>
+        <p class="stack">Python · Ollama · local LLM · feature engineering ·
+          prompt design · provider abstraction layer</p>
+        <a href="https://github.com/icho2021/adaptive-hint-agent">Repository &rarr;</a>
+      </div>
+    </details>
+
+    <details class="card" style="--k:var(--c4)">
+      <summary>
+        <div class="tags">
+          <span class="tag own">Solo</span><span class="tag">Full stack</span>
+          <span class="when">2026 · 04</span>
+        </div>
+        <h3>Capybara Comfort Shop</h3>
+        <p class="role">Built alone · and the bug that changed how I debug</p>
+        <p class="sum">A full-stack store where uploaded images kept vanishing
+          after every deploy. The fix mattered less than how I found it.</p>
+        <p class="more">Full breakdown &rarr;</p>
+      </summary>
+      <div class="detail">
+        <p>I tried several candidate fixes in the upload code and none worked,
+          because the fault was not in any one place: files were written to the
+          container's own disk, and that filesystem is wiped on redeploy.</p>
+        <p><b>I found it by giving up on single-point fixes</b> and walking the
+          whole request path by hand, from the browser upload through the API to
+          the database write and into the deployment environment. That is the
+          habit I kept, not the patch.</p>
+        <p>My fix was a stopgap and I wrote that in the README at the time:
+          object storage is the real answer. Recording the shortcut was the
+          point, not hiding it.</p>
+        <p class="stack">React · Node.js / Express · PostgreSQL · Render</p>
+        <a href="https://github.com/icho2021/Capybara-Comfort-Shop--Full-stack">Repository &rarr;</a>
+      </div>
+    </details>
+
+    <details class="card" style="--k:var(--c3)">
+      <summary>
+        <div class="tags">
+          <span class="tag own">Solo</span><span class="tag">OOP</span>
+          <span class="when">2026 · 01</span>
+        </div>
+        <h3>Virtual Pet Management System</h3>
+        <p class="role">Built alone · Java desktop application</p>
+        <p class="sum">A state machine for the pet's needs and mood, written to
+          an MVC brief with the model kept testable on its own.</p>
+        <p class="more">Full breakdown &rarr;</p>
+      </summary>
+      <div class="detail">
+        <p>The model carries no Swing dependency, so the behaviour can be unit
+          tested without constructing any interface. The exercise was separation
+          of concerns held to strictly rather than approximately, which is easy
+          to claim and easy to check.</p>
+        <p class="stack">Java · Swing · MVC · JUnit</p>
+        <a href="https://github.com/icho2021/Virtual-Pet-Management-System">Repository &rarr;</a>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="shead">
+    <div class="shead-l"><span class="num">02</span><h2>What I work in</h2></div>
+    <span class="hint">Split by what I can defend under questioning</span>
+  </div>
+  <div class="skills">
+    <div><h3>Fluent</h3>
+      <p>SQL · Python (pandas, NumPy) · DuckDB · PostgreSQL · MySQL</p>
+      <p class="n">ETL and ELT, data quality checks, dimensional modelling</p></div>
+    <div><h3>Cloud</h3>
+      <p>AWS — ECS Fargate, Batch, S3, SQS, ECR, CloudWatch, IAM · Terraform · Docker</p>
+      <p class="n">Infrastructure as code, async workers, failure injection</p></div>
+    <div><h3>Governance</h3>
+      <p>Data contracts · rule catalogues with cited authority · lineage ·
+        immutable batches · audit trails · approval gates</p>
+      <p class="n">Built from primary sources, not from a framework</p></div>
+    <div><h3>AI, with limits</h3>
+      <p>LLM APIs · local inference via Ollama · retrieval · prompt design</p>
+      <p class="n">Including where to keep a model out of the decision path</p></div>
+    <div><h3>Analysis</h3>
+      <p>Power BI · Tableau · regression · hypothesis testing · A/B tests ·
+        RFM · K-means</p></div>
+    <div><h3>Used, not claimed</h3>
+      <p>Java · R · JavaScript · React · Node.js · REST APIs · Prisma · DynamoDB</p>
+      <p class="n">Listed as experience rather than as strengths</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="shead">
+    <div class="shead-l"><span class="num">03</span><h2>Contact</h2></div>
+  </div>
+  <div class="contact">
+    <span><span class="mono" id="mail">Icho.cai.work@gmail.com</span>
+      <button class="copy" id="cp" type="button">copy</button></span>
+    <span><a href="https://github.com/icho2021">github.com/icho2021</a></span>
+    <span><a href="https://www.linkedin.com/in/ichochoi/">linkedin.com/in/ichochoi</a></span>
+    <span class="hint">Vancouver, BC · open to co-op and new grad roles</span>
+  </div>
+</section>
+
+<footer>Northeastern University · MS Computer Science (Align) · Vancouver, BC ·
+  <a href="https://www.linkedin.com/in/ichochoi/">LinkedIn</a> ·
+  <a href="https://github.com/icho2021">GitHub</a></footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement, b = document.getElementById("themer");
+  try { var v = localStorage.getItem("theme"); if (v) root.setAttribute("data-theme", v); } catch (e) {}
+  b.addEventListener("click", function () {
+    var dark = getComputedStyle(root).colorScheme.indexOf("dark") > -1;
+    var next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  document.getElementById("cp").addEventListener("click", function () {
+    var el = document.getElementById("mail"), btn = this;
+    function flash() { btn.textContent = "copied"; setTimeout(function () { btn.textContent = "copy"; }, 1600); }
+    function select() {
+      // Clipboard writes are refused in some app views; selecting the address
+      // lets the reader copy it from the keyboard instead.
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textContent.trim()).then(flash, select);
+    } else { select(); }
+  });
+})();
+</script>

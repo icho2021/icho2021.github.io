@@ -1,4 +1,5 @@
-<title>Zimin Cai Portfolio</title>
+<meta name="robots" content="noindex, nofollow">
+<title>Icho Cai Portfolio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout follows a reference the user chose: right-aligned nav, a hero paired
@@ -47,8 +48,6 @@ nav a:hover{color:var(--accent-ink)}
   padding-block:clamp(2.5rem,6vw,4.5rem) 1rem;align-items:start}
 h1{font-size:clamp(3.2rem,9vw,5.2rem);font-weight:800;letter-spacing:-.035em;
   line-height:.98;margin-top:1.1rem}
-.h1-zh{display:block;font-size:.34em;font-weight:500;color:var(--muted);
-  letter-spacing:.06em;margin-top:.5rem}
 .subtitle{font-family:var(--mono);font-size:clamp(1rem,2.6vw,1.22rem);
   color:var(--accent);margin-top:.85rem;letter-spacing:-.01em}
 .lede{font-size:clamp(1.02rem,2.4vw,1.14rem);color:var(--ink);margin-top:1.4rem;max-width:34ch}
@@ -94,7 +93,6 @@ h2{font-size:clamp(1.5rem,4vw,1.95rem);font-weight:800;letter-spacing:-.025em}
   padding:.16rem .46rem;border-radius:3px;background:var(--bg);border:1px solid var(--rule);
   color:var(--muted);white-space:nowrap}
 .tag.own{color:var(--k);border-color:var(--k)}
-.when{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-left:auto;white-space:nowrap}
 .card h3{font-size:1.06rem;font-weight:700;letter-spacing:-.015em;margin-top:.7rem;line-height:1.3}
 .role{font-size:.8rem;color:var(--muted);margin-top:.3rem}
 .card .sum{font-size:.92rem;color:var(--ink-2);margin-top:.65rem}
@@ -151,10 +149,14 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
 
 <div class="hero">
   <div>
-    <h1>Zimin Cai<span class="h1-zh">蔡子珉</span></h1>
-    <p class="subtitle">Data Quality &times; Data Governance</p>
-    <p class="lede">MS Computer Science at Northeastern University. I build the
-      part of a pipeline that proves its own output is right.</p>
+    <h1>Icho Cai</h1>
+    <p class="subtitle">Data &amp; Cloud Engineering</p>
+    <p class="lede">I build the part of a pipeline that proves its own output
+      is right.</p>
+    <p class="body">Master's degrees in Data Analytics and in Computer Science,
+      with two years working in analytics in between. That order is why I care
+      less about moving data than about whether anyone can trust the number at
+      the end of it.</p>
     <p class="body">Most recently a governance layer over Canada's published
       federal contract history: 506,847 records, 21 rules that each cite the
       official definition behind them, and a test for every rule that breaks it
@@ -205,11 +207,10 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
 
   <div class="cards">
 
-    <details class="card" style="--k:var(--c1)" open>
+    <details class="card" style="--k:var(--c1)">
       <summary>
         <div class="tags">
           <span class="tag own">Solo</span><span class="tag">Data governance</span>
-          <span class="when">2026 · 08</span>
         </div>
         <h3>CanadaBuys Data Quality &amp; Compliance Agent</h3>
         <p class="role">Designed and built alone · Python, DuckDB, AWS Batch</p>
@@ -255,7 +256,6 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       <summary>
         <div class="tags">
           <span class="tag own">Team project</span><span class="tag">Cloud</span>
-          <span class="when">2026 · 04</span>
         </div>
         <h3>QuickScan Hub</h3>
         <p class="role">Team project · my part was the failure path and IaC</p>
@@ -291,7 +291,6 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       <summary>
         <div class="tags">
           <span class="tag own">Solo</span><span class="tag">Modelling</span>
-          <span class="when">2026 · 04&ndash;06</span>
         </div>
         <h3>E-Commerce Analytics Platform</h3>
         <p class="role">Built alone · star schema with a frozen metric layer</p>
@@ -322,7 +321,6 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       <summary>
         <div class="tags">
           <span class="tag own">Solo</span><span class="tag">Applied AI</span>
-          <span class="when">2026 · 02</span>
         </div>
         <h3>Adaptive Hint Agent</h3>
         <p class="role">Built alone · local LLM behind a rule-based policy</p>
@@ -340,6 +338,15 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
           The model runs locally through Ollama behind a provider abstraction, so
           the same pipeline can point at a local or hosted backend without the
           rest of the code knowing which.</p>
+        <p>To tell whether the adaptive policy was actually better, I built a
+          trace-replay harness that runs the same recorded learner sessions
+          through three policies &mdash; fixed rules, data-driven, and adaptive
+          &mdash; and scores each on responsiveness, hint effectiveness,
+          efficiency, frequency and recovery. Comparing policies on identical
+          traces is the only way the comparison means anything.</p>
+        <p>Agent behaviour is defined in an instruction file kept separate from
+          the code, so changing how it responds is an edit to that file and a
+          re-run of the harness rather than a code change.</p>
         <p class="stack">Python · Ollama · local LLM · feature engineering ·
           prompt design · provider abstraction layer</p>
         <a href="https://github.com/icho2021/adaptive-hint-agent">Repository &rarr;</a>
@@ -350,7 +357,6 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       <summary>
         <div class="tags">
           <span class="tag own">Solo</span><span class="tag">Full stack</span>
-          <span class="when">2026 · 04</span>
         </div>
         <h3>Capybara Comfort Shop</h3>
         <p class="role">Built alone · and the bug that changed how I debug</p>
@@ -378,7 +384,6 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       <summary>
         <div class="tags">
           <span class="tag own">Solo</span><span class="tag">OOP</span>
-          <span class="when">2026 · 01</span>
         </div>
         <h3>Virtual Pet Management System</h3>
         <p class="role">Built alone · Java desktop application</p>
@@ -388,9 +393,16 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       </summary>
       <div class="detail">
         <p>The model carries no Swing dependency, so the behaviour can be unit
-          tested without constructing any interface. The exercise was separation
-          of concerns held to strictly rather than approximately, which is easy
-          to claim and easy to check.</p>
+          tested without constructing any interface. Separation of concerns held
+          to strictly rather than approximately, which is easy to claim and easy
+          to check by trying to instantiate the model on its own.</p>
+        <p>Several pet personalities share most of their behaviour, so the common
+          parts live in interfaces and abstract classes and each personality
+          supplies only what differs. Writing the second personality is what
+          shows whether the first one was factored properly.</p>
+        <p>JUnit tests cover the state transitions, the boundary conditions where
+          a need crosses its threshold, and each personality strategy &mdash; the
+          three places where a state machine actually breaks.</p>
         <p class="stack">Java · Swing · MVC · JUnit</p>
         <a href="https://github.com/icho2021/Virtual-Pet-Management-System">Repository &rarr;</a>
       </div>
@@ -436,13 +448,15 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
       <button class="copy" id="cp" type="button">copy</button></span>
     <span><a href="https://github.com/icho2021">github.com/icho2021</a></span>
     <span><a href="https://www.linkedin.com/in/ichochoi/">linkedin.com/in/ichochoi</a></span>
-    <span class="hint">Vancouver, BC · open to co-op and new grad roles</span>
+    <span class="hint">Open to co-op and new grad roles</span>
   </div>
 </section>
 
-<footer>Northeastern University · MS Computer Science (Align) · Vancouver, BC ·
-  <a href="https://www.linkedin.com/in/ichochoi/">LinkedIn</a> ·
-  <a href="https://github.com/icho2021">GitHub</a></footer>
+<footer>
+  <a href="https://github.com/icho2021">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/ichochoi/">LinkedIn</a> &nbsp;·&nbsp;
+  <span class="mono">Icho.cai.work@gmail.com</span>
+</footer>
 </div>
 
 <script>

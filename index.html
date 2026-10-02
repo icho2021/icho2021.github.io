@@ -47,7 +47,8 @@ nav a:hover{color:var(--accent-ink)}
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);
   padding-block:clamp(2.5rem,6vw,4.5rem) 1rem;align-items:start}
-.namerow{display:flex;align-items:center;gap:clamp(.9rem,2.4vw,1.5rem);margin-top:1.1rem}
+.namerow{display:flex;flex-direction:column;align-items:flex-start;
+  gap:clamp(1rem,2.2vw,1.35rem);margin-top:1.1rem}
 .namerow h1{margin-top:0}
 .avatar{width:clamp(104px,14vw,152px);height:clamp(104px,14vw,152px);border-radius:50%;
   object-fit:cover;display:block;flex:none;
@@ -142,9 +143,6 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
 @media (max-width:860px){
   .hero{grid-template-columns:1fr;gap:2.4rem}
   .ev-grid{grid-template-columns:1fr 1fr}
-}
-@media (max-width:560px){
-  .namerow{flex-direction:column;align-items:flex-start;gap:1.05rem}
 }
 @media (max-width:460px){.ev-grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -267,6 +265,58 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
         <p class="stack">Python · DuckDB · Parquet · Docker · AWS Batch on Fargate ·
           S3 · ECR · CloudWatch · Ollama (local inference)</p>
         <a href="https://github.com/icho2021/canadabuys-data-quality-compliance-agent/tree/main/docs" target="_blank" rel="noopener">Eight documents on why each decision went the way it did &rarr;</a>
+      </div>
+    </details>
+
+    <details class="card" style="--k:var(--c4)">
+      <summary>
+        <div class="tags">
+          <span class="tag own">Solo</span><span class="tag">Segmentation &amp; risk</span>
+        </div>
+        <h3><a class="repo" href="https://github.com/icho2021/online-gambling-player-analytics" target="_blank" rel="noopener">Player Analytics on Online Gambling Activity<span class="ext">&nearr;</span></a></h3>
+        <p class="role">Python, DuckDB, numpy, Power BI</p>
+        <p class="sum">Six workbooks of raw activity, five thousand players
+          followed over six years. The segmentation ended up answering a
+          question nobody asked: the players worth the most and the players who
+          need watching are largely the same people.</p>
+        <p class="more">Full breakdown <span>&rarr;</span></p>
+      </summary>
+      <div class="detail">
+        <p><b>121 of the 129 highest-risk players sit in the two segments that
+          produce most of the revenue.</b> An automatic restriction on high risk
+          would land almost entirely on the best customers. That is why the
+          output is a review queue with a recorded human decision, not a filter,
+          and why the queue carries a column saying which of the two scores put
+          each player there.</p>
+        <p><b>Ranking players by volume would rank them backwards.</b> The Low
+          Value segment has the highest average wager of any segment, 16,519
+          against Premium&rsquo;s 10,158. They are low value because they win:
+          their contribution to revenue is negative.</p>
+        <p><b>The falling line is churn, not a shrinking market.</b> Wagers drop
+          from 17.5M in 2015 to almost nothing by 2021, but this is one fixed
+          cohort followed forward and nobody joins after the start. Reading that
+          slope as demand would point at the wrong problem entirely.</p>
+        <p><b>Two risk scores instead of one.</b> Money laundering wants an
+          investigation and gambling harm wants an intervention, so a single
+          flag would let a payments pattern and a harm marker cancel each other
+          out. Volume alone never creates risk either: a large withdrawal only
+          adds severity once another pattern has already fired, otherwise the
+          rule just flags the biggest customers for being big.</p>
+        <p><b>K is a business choice and the diagnostics say so.</b> The mean
+          silhouette sits near 0.2 across K=2 to K=8, so no K separates these
+          players cleanly and the metric cannot decide it. Four tiers are chosen
+          because four tiers map to four different treatments.</p>
+        <div class="bound"><b>Limits:</b> the game-mix shift from cash games to
+          tournaments is described, not explained, because separating
+          survivorship from real behaviour change needs a per-player time
+          series. The withdrawal success rate halves over the period but the
+          source carries no failure reason, so that finding stops at &ldquo;ask
+          the payments team&rdquo;. And the risk rules have no known outcomes to
+          validate against, so they are rules with a rationale rather than a
+          model with a measured precision.</div>
+        <p class="stack">Python · DuckDB · pandas · numpy (k-means written out,
+          no modelling library) · openpyxl · Power BI</p>
+        <a href="https://github.com/icho2021/online-gambling-player-analytics/blob/main/docs/findings.md" target="_blank" rel="noopener">Five findings with the charts behind them &rarr;</a>
       </div>
     </details>
 

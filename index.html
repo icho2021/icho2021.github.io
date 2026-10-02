@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <title>Icho Cai Portfolio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -46,6 +47,10 @@ nav a:hover{color:var(--accent-ink)}
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);
   padding-block:clamp(2.5rem,6vw,4.5rem) 1rem;align-items:start}
+.avatar{width:clamp(84px,10vw,104px);height:clamp(84px,10vw,104px);border-radius:50%;
+  object-fit:cover;object-position:50% 22%;display:block;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 14%,transparent),
+             0 8px 24px color-mix(in srgb,var(--ink) 12%,transparent)}
 h1{font-size:clamp(3.2rem,9vw,5.2rem);font-weight:800;letter-spacing:-.035em;
   line-height:.98;margin-top:1.1rem}
 .subtitle{font-family:var(--mono);font-size:clamp(1rem,2.6vw,1.22rem);
@@ -153,8 +158,10 @@ footer{border-top:1px solid var(--rule);padding-block:1.8rem 3.5rem;
 
 <div class="hero">
   <div>
+    <img class="avatar" src="icho.jpg" width="480" height="480"
+         alt="Portrait of Zimin (Icho) Cai">
     <h1>Icho Cai</h1>
-    <p class="subtitle">Data &amp; Cloud Engineering</p>
+    <p class="subtitle">Data Analytics &amp; Engineering</p>
     <p class="lede">I build data systems, and the proof that you can trust
       what they produce.</p>
     <p class="body">Master's degrees in Data Analytics and in Computer Science,
